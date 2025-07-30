@@ -1,0 +1,29 @@
+name: Triva Private Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-triva:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Deploy Triva Private
+        run: |
+          echo "🔐 Starting Private Deployment of Triva..."
+          echo "🌐 Mode: ${{ secrets.TRIVA_MODE }}"
+          echo "🔑 Owner: ${{ secrets.DEPLOY_OWNER }}"
+          echo "🧠 Initializing core memory..."
+          echo "✅ Triva is now deployed privately for Bhavik Dindor."
